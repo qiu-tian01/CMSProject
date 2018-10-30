@@ -1,0 +1,56 @@
+<div class="box box-info cinema-update returnCinemaList">
+    <div class="box-header with-border">
+        <h3 class="box-title">修改影院信息</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form class="form-horizontal" id="cineamUpdate-form" enctype="multipart/form-data">
+        <div class="box-body">
+            <div class="form-group">
+                <label for="posterPic" class="col-sm-2 control-label">影院logo</label>
+
+                <div class="col-sm-10">
+                    <img src="http://localhost:3000{{data.cinemaLogo}}" alt="">
+                    <input type="file" name="cinemaLogo" id="cinemaLogo">
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="cinemaName" class="col-sm-2 control-label">影院名称</label>
+
+                <div class="col-sm-10">
+                    <!-- <img src="{{data.cinemaLogo}}" alt=""> -->
+                    <input required type="text" class="form-control" value="{{data.name}}"  name="name" id="cinemaName" placeholder="请输入影院名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cinemaCity" class="col-sm-2 control-label">影院地点</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="{{data.city}}" name="city" id="city" placeholder="请输入影院地点">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="boxOffice" class="col-sm-2 control-label">影院票房</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="{{data.boxOffice}}" name="boxOffice" id="boxOffice" placeholder="请输入影院票房">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="boxOffice" class="col-sm-2 control-label">重新发布</label>
+
+                <div class="col-sm-10">
+                    <input type="checkbox" class="" name="isRupublish" id="isRupublish"  >
+                </div>
+            </div>
+            <input type="hidden" name = "id" value="{{data._id}}"> 
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="button" id="returnList" class="btn btn-default">返回列表</button>
+            <button type="submit" class="btn btn-info pull-right">提交</button>
+            <button type="reset" class="btn btn-default pull-right" style="margin-right: 15px">重置</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>

@@ -1,0 +1,63 @@
+<div class="box cinema-list">
+    <div class="box-header with-border">
+      <h3 class="box-title">
+        <button id="addbtn" class="btn btn-block btn-success"><span class="fa fa-plus-circle"></span> 添加</button>
+      </h3>
+      <div class="box-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+          <input type="text" id="keywords" required value="" name="pos_search" class="form-control pull-right" placeholder="输入电影名以搜索">
+  
+          <div class="input-group-btn" id="searchBtn">
+            <button type="button" id="possearch" class="btn btn-default"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div id="disWrap">
+        <div class="box-body">
+          <table class="table table-bordered cinema-list__tabel">
+            <tr>
+              <th style="width: 10px">#</th>
+              <th>电影海报</th>
+              <th>电影名</th>
+              <th>演员</th>
+              <th>发行公司</th>
+              <th>导演</th>
+              <th>上映时间</th>
+              <th style="width: 140px">操作</th>
+            </tr>
+            {{ each data.items }}
+            <tr data-id={{ $value._id }}>
+              <td>{{$index + 1}}</td>
+              <td><img width="50" height="50" src= "http://localhost:3000{{ $value.posterPic }}" alt=""></td>
+              <td>{{ $value.movieName }}</td>
+              <td>{{ $value.actor }}</td>
+              <td>{{ $value.company }}</td>
+              <td>{{ $value.director }}</td>
+              <td>{{ $value.time }}</td>
+              <td>
+                <button class="btn btn-sm btn-primary movies-update" posid="" pageno="" keywords=""><span class="fa fa-edit"></span>
+                  修改</button>
+                <button class="btn btn-sm btn-danger movies-remove" posid="" pageno="" pagecount="" pagesize="" keywords=""
+                  filename=""><span class="fa fa-remove"></span> 删除</button>
+              </td>
+            </tr>
+            {{ /each }}
+            <!-- <tr>
+              <td colspan="8"> 暂无数据. </td>
+            </tr> -->
+          </table>
+        </div>
+        <div class="box-footer clearfix">
+          <ul class="pagination pagination-sm no-margin pull-right">
+            <li><a href="#/movies-list?pageNo=<%= (data.pageInfo.pageNo > 1) ? data.pageInfo.pageNo - 1 : data.pageInfo.pageNo%>">&laquo;</a></li>
+            <% for(let index = 0;index < data.pageInfo.totalPage;index++){%>
+              <li class="{{if data.pageInfo.pageNo == index+1}}active{{/if}}"><a href="#/movies-list?pageNo=<%= index+1 %>"><%= index+1 %></a></li>
+            <%} %>
+            <li><a href="#/movies-list?pageNo=<%= (data.pageInfo.pageNo < data.pageInfo.totalPage ) ? ~~data.pageInfo.pageNo +1 : data.pageInfo.pageNo%>">&raquo;</a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <!-- /.box -->
